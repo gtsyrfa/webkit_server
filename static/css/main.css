@@ -1,0 +1,16 @@
+h1{
+	color: #ff8c00;
+	text-shadow: black 0 0 1px;
+}
+
+input {
+    padding:5px 15px; 
+    background:#ff8c00; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	color: white;
+	font-weight: 600;
+	margin: 10px 0px 0px;
+}
