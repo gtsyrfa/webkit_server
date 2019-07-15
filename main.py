@@ -25,4 +25,4 @@ def index():
         return f"Файл по имени \"{fname}\" успешно загрузился!"
     return render_template("Uploadform.html")
 
-app.run(debug=True)
+app.run()
