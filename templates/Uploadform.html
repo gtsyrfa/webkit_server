@@ -10,32 +10,24 @@
 <form enctype="multipart/form-data" method="post" name="fileinfo" align="center">
   <input type="file" name="file" required />
   <br>
-  <input type="submit" value="Upload the file!" />
+  <input type="button" value="Upload the file!" onclick ="upload_file()"/>
 </form>
 <div></div>
 <script>
+function upload_file() {
 var form = document.forms.namedItem("fileinfo");
-form.addEventListener('submit', function(ev) {
-  var oData = new FormData(form);
-  var oReq = new XMLHttpRequest();
-  var dialog = document.querySelector('dialog');
-  oReq.open("POST", "{{url_for('index')}}", true);
-  oReq.onload = function(oEvent) {
-    if (oReq.status == 200) {
-      alert(oReq.responseText)
-      dialog.show();
-    } else {
-      document.getElementById("resulttext").innerHTML = "Error"
-      dialog.show();
-      //alert("Error " + oReq.status + " occurred when trying to upload your file")
-    }
-  };
-  oReq.send(oData);
-  ev.preventDefault();
-}, false);
-
-
-
+var oData = new FormData(form);
+var oReq = new XMLHttpRequest();
+oReq.open("POST", "{{url_for('index')}}", true);
+    oReq.onreadystatechange = function() {
+        if (oReq.readyState == 4) {
+            if(oReq.status == 200) {
+                alert(oReq.responseText);
+            }
+        }
+    };
+oReq.send(oData);	
+}
 </script>
 </body>
 </html>

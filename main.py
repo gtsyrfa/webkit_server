@@ -16,7 +16,7 @@ def index():
         translated_fname = translify(file.filename) # Делаем транслитерацию, 
         #    чтобы русские буквы не были стёрты функцией secure_filename
         fname = secure_filename(translated_fname) 
-        fullpath = 'static/uploaded_files' + fname
+        fullpath = 'static/uploaded_files/' + fname
         #Поверяем, был ли создан файл
         if os.path.exists(fullpath):
             return (f"Файл по имени \"{fname}\" уже существует! "+
@@ -25,4 +25,4 @@ def index():
         return f"Файл по имени \"{fname}\" успешно загрузился!"
     return render_template("Uploadform.html")
 
-app.run()
+app.run(debug=True)
